@@ -11,14 +11,14 @@ package config
 object BuildTimeConfig {
     const val APPLICATION_ID = "com.oblako.messenger"
     const val APPLICATION_NAME = "Oblako Messenger"
-    val METADATA_HOST_REVERSED: String? = null
+    val METADATA_HOST_REVERSED: String? = "io.github.oblako-app1"
     val OAUTH_CLIENT_URL_PATH: String? = "apps/android"
-    val URL_WEBSITE: String? = null
-    val URL_LOGO: String? = null
-    val URL_COPYRIGHT: String? = null
-    val URL_ACCEPTABLE_USE: String? = null
-    val URL_PRIVACY: String? = null
-    val URL_POLICY: String? = null
+    val URL_WEBSITE: String? = "https://oblako-app1.github.io/"
+    val URL_LOGO: String? = "https://oblako-app1.github.io/logo.png"
+    val URL_COPYRIGHT: String? = "https://oblako-app1.github.io/copyright.html"
+    val URL_ACCEPTABLE_USE: String? = "https://oblako-app1.github.io/terms.html"
+    val URL_PRIVACY: String? = "https://oblako-app1.github.io/privacy.html"
+    val URL_POLICY: String? = "https://oblako-app1.github.io/terms.html"
     val SERVICES_MAPTILER_BASE_URL: String? = null
     val SERVICES_MAPTILER_APIKEY: String? = null
     val SERVICES_MAPTILER_LIGHT_MAPID: String? = null
