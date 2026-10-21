@@ -215,7 +215,12 @@ private fun HomeScaffold(
                         roomListState.eventSink(RoomListEvent.ToggleSearchResults)
                     }
                 },
-                onMenuActionClick = onMenuActionClick,
+                onMenuActionClick = { action ->
+                    // Если действие связано с каталогом комнат (Explore), игнорируем его
+                    if (action != RoomListMenuAction.ExploreRooms) {
+                        onMenuActionClick(action)
+                    }
+                },
                 onOpenSettings = onOpenSettings,
                 onAccountSwitch = { sessionId ->
                     // The user has switched account by swiping their avatar, so they know the gesture.
@@ -369,7 +374,7 @@ private fun HomeBottomBar(
                 tooltipLabel = stringResource(item.labelRes),
                 isSelected = isSelected,
                 onClick = { onItemClick(item) },
-                counter = totalUnreadCount.takeIf { item == HomeNavigationBarItem.Chats && it > 0 }
+                counter = totalUnreadCount.takeIf { item == HomeNavigationBarItem.Chats && item == HomeNavigationBarItem.Chats && it > 0 }
             )
         }
     }
@@ -412,7 +417,7 @@ internal fun HomeViewA11yPreview() = ElementPreview {
         onConfirmRecoveryKeyClick = {},
         onStartChatClick = {},
         onCreateSpaceClick = {},
-        onRoomSettingsClick = {},
+        onRoomSettingsDict = {},
         onReportRoomClick = {},
         onMenuActionClick = {},
         onDeclineInviteAndBlockUser = {},
