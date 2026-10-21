@@ -164,11 +164,7 @@ fun PreferencesRootView(
             // Version
             Footer(
                 version = state.version,
-                onClick = if (!state.showDeveloperSettings) {
-                    { state.eventSink(PreferencesRootEvent.OnVersionInfoClick) }
-                } else {
-                    null
-                }
+                onClick = null
             )
         }
         state.userStatusState?.let {
@@ -362,31 +358,11 @@ private fun ColumnScope.GeneralSection(
         thickness = 1.dp,
         color = ElementTheme.colors.bgSubtleSecondary,
     )
-    if (state.showAnalyticsSettings) {
-        ListItem(
-            content = { Text(stringResource(id = CommonStrings.common_analytics)) },
-            leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Chart())),
-            onClick = onOpenAnalytics,
-        )
-    }
-    if (state.showLabsItem) {
-        ListItem(
-            content = { Text(stringResource(id = R.string.screen_labs_title)) },
-            leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Labs())),
-            onClick = onOpenLabs,
-        )
-    }
     ListItem(
         content = { Text(stringResource(id = CommonStrings.common_about)) },
         leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Info())),
         onClick = onOpenAbout,
     )
-    // Put developer settings at the end, so nothing bad happens if the user clicks 8 times to enable the entry
-    AnimatedVisibility(
-        visible = state.showDeveloperSettings,
-    ) {
-        DeveloperPreferencesView(onOpenDeveloperSettings)
-    }
 }
 
 @Composable
@@ -403,15 +379,6 @@ private fun ColumnScope.Footer(
         text = version,
         style = ElementTheme.typography.fontBodySmRegular,
         color = ElementTheme.colors.textSecondary,
-    )
-}
-
-@Composable
-private fun DeveloperPreferencesView(onOpenDeveloperSettings: () -> Unit) {
-    ListItem(
-        content = { Text(stringResource(id = CommonStrings.common_developer_options)) },
-        leadingContent = ListItemContent.Icon(IconSource.Vector(CompoundIcons.Code())),
-        onClick = onOpenDeveloperSettings
     )
 }
 
